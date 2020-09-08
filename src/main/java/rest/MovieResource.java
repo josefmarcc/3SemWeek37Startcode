@@ -71,7 +71,7 @@ public class MovieResource {
     @Path("title/{title}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public String getEmployeesByName(@PathParam("title") String title) {
+    public String getMovieByTitle(@PathParam("title") String title) {
         EntityManager em = EMF.createEntityManager();
         try {
             Movie movie = FACADE.getMovieByTitle(title);
@@ -82,6 +82,21 @@ public class MovieResource {
         }
     }
     
+    @GET
+    @Path("/populate")
+    @Produces({MediaType.APPLICATION_JSON})
+    public String populate() {
+        FACADE.populateDB();
+        return "{\"msg\":\"3 rows added\"}";
+    }
+    
+    @GET
+    @Path("/unpopulate")
+    @Produces({MediaType.APPLICATION_JSON})
+    public String unpopulate() {
+        FACADE.deleteAllMovies();
+        return "{\"msg\":\"All rows deleted\"}";
+    }
     
     
 

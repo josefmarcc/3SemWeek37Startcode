@@ -43,8 +43,8 @@ public class FacadeExampleTest {
         try {
             em.getTransaction().begin();
             em.createNamedQuery("Movie.deleteAllRows").executeUpdate();
-            em.persist(new Movie(1995, "More text", testData));
-            em.persist(new Movie(1984, "More text2", testData));
+            em.persist(new Movie(1995, "Kill Bill", testData));
+            em.persist(new Movie(1984, "Saw", testData));
 
             em.getTransaction().commit();
         } finally {
@@ -62,5 +62,17 @@ public class FacadeExampleTest {
     public void testAFacadeMethod() {
         assertEquals(2, facade.getAllMovies().size(), "Expects two rows in the database");
     }
+    
+    @Test
+        public void testGetMovieByTitle() {
+        MovieFacade cf = MovieFacade.getMovieFacade(emf);
+        String name = "Kill Bill";
+        String expResult = "Kill Bill";
+        String result = cf.getMovieByTitle(name).getTitle();
 
+        assertEquals(expResult, result);
+    }
+    
+    
+    
 }
