@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <title>DOM bubbling</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <style>
+            .myDiv {width: 25px; 
+                    height: 25px;
+                    background-color:yellow; 
+                    margin:1px;}
+
+        </style>
+    </head>
+    <body>
+        <div id="outer">
+            <div class="myDiv" id="1">1 linje</div>
+            <div class="myDiv" id="2">2 linje</div>
+            <div class="myDiv" id="3">3 linje</div>
+            <div class="myDiv" id="4">4 linje</div>
+            <div class="myDiv" id="5">5 linje</div>
+            <div class="myDiv" id="6">6 linje</div>
+            <div class="myDiv" id="7">7 linje</div>
+            <div class="myDiv" id="8">8 linje</div>
+            <div class="myDiv" id="9">9 linje</div>
+            <div class="myDiv" id="10">10 linje</div>
+        </div>
+
+        <p id="demo"></p>
+
+        <script>
+            
+            const idElement = document.getElementById("outer");
+            
+            idElement.addEventListener('click', function (event){
+                document.getElementById("demo").innerHTML =
+                    "Hi from " + event.target.id;
+            })
+
+        </script>
+    </body>
+</html>

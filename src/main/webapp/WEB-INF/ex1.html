@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <title>DOM</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div id="1">Første linje</div>
+        <div id="2">Anden linje</div>
+        <div id="3">Tredje linje</div>
+        
+        <button id="btn">Tryk her</button>
+        
+        <script>
+            var ids = document.getElementsByTagName("div")
+            for (var i = 0; i < ids.length; i++) {
+                ids[i].style.backgroundColor = "red";
+}
+            function changeColors() {
+                document.getElementById("1").style.backgroundColor ="red";
+                document.getElementById("2").style.backgroundColor ="yellow";
+                document.getElementById("3").style.backgroundColor ="green";
+            }
+            
+            let btn = document.getElementById("btn")
+            
+            btn.addEventListener('click', (event) => {
+                event.preventDefault();
+                changeColors();
+            })
+            
+        </script>
+        
+    </body>
+</html>

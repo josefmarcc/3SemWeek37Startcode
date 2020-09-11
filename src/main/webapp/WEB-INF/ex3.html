@@ -1,0 +1,61 @@
+<html>
+    <head>
+        <title>Namelist</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+
+        <div id="namelist">Her burde være en navneliste</div>
+
+        <form action="#">
+            <input id="fname" type="text" name="fname">
+            <input id="submitName" type="submit" value="Submit">
+            <input id="removeFirst" type="submit" value="Remove First">
+            <input id="removeLast" type="submit" value="Remove Last">
+        </form>
+
+
+        <script>
+            let names = ["Lars", "Jan", "Peter", "Bo", "Frederik"];
+            
+            // join namesList
+            document.getElementById("namelist").addEventListener("load", htmlNames());
+            
+            // add a name to the list
+            document.getElementById("submitName").addEventListener("click", addName);
+            
+            // remove the first name in list
+            document.getElementById("removeFirst").addEventListener("click", removeFirst);
+            
+            // remove the last name in the list
+            document.getElementById("removeLast").addEventListener("click", removeLast);
+
+
+            function htmlNames() {
+                document.getElementById("namelist").innerHTML = "<ul>" + names.map(n => "<li>" + n), +(names.join("</li><li> </li>") + "</ul>");
+            }
+
+            document.getElementById("submitName").addEventListener("click", addName);
+
+            function addName(e) {
+                e.preventDefault()
+                let name = document.getElementById("fname").value;
+                names = [name, ...names];
+                htmlNames()
+            }
+            
+            function removeFirst(e) {
+                e.preventDefault();
+                names.shift(0);
+                htmlNames();
+            }
+            
+            function removeLast(e) {
+                e.preventDefault();
+                names.pop();
+                htmlNames();
+            }
+        </script>
+    </body>
+</html>
